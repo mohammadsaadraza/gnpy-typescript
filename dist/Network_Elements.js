@@ -62,7 +62,9 @@ var Roadm = /** @class */ (function (_super) {
         var _this = this;
         var uid = node.uid, type = node.type, metadata = node.metadata;
         _this = _super.call(this, { uid: uid, type: type, metadata: metadata }) || this;
-        _this.params = node.params;
+        if (node.params) {
+            _this.params = node.params;
+        }
         return _this;
     }
     return Roadm;

@@ -26,8 +26,8 @@ var PhysicalTopology = /** @class */ (function () {
     };
     PhysicalTopology.prototype.json = function () {
         return {
-            elements: this.elementList,
-            connections: this.connectionList,
+            elements: this.elementList.elements,
+            connections: this.connectionList.list,
         };
     };
     return PhysicalTopology;

@@ -1,0 +1,80 @@
+{
+	"path-request": [
+		{
+			"request-id": "0",
+			"source": "Site_A",
+			"destination": "Site_B",
+			"src-tp-id": "Site_A",
+			"dst-tp-id": "Site_B",
+			"bidirectional": false,
+			"path-constraints": {
+				"te-bandwidth": {
+					"technology": "flexi-grid",
+					"trx_type": "Voyager",
+					"trx_mode": null,
+					"effective-freq-slot": [
+						{
+							"N": "null",
+							"M": "null"
+						}
+					],
+					"spacing": 50e9,
+					"max-nb-of-channel": 50,
+					"output-power": null,
+					"path_bandwidth": 100e9
+				}
+			}
+		},
+		{
+			"request-id": "1",
+			"source": "Site_A",
+			"destination": "Site_C",
+			"src-tp-id": "Site_A",
+			"dst-tp-id": "Site_C",
+			"bidirectional": true,
+			"path-constraints": {
+				"te-bandwidth": {
+					"technology": "flexi-grid",
+					"trx_type": "Voyager",
+					"trx_mode": null,
+					"effective-freq-slot": [
+						{
+							"N": "null",
+							"M": "null"
+						}
+					],
+					"spacing": 50e9,
+					"max-nb-of-channel": 110,
+					"output-power": null,
+					"path_bandwidth": 900e9
+				}
+			}
+		},
+		{
+			"request-id": "2",
+			"source": "Site_B",
+			"destination": "Site_C",
+			"src-tp-id": "Site_B",
+			"dst-tp-id": "Site_C",
+			"bidirectional": false,
+			"path-constraints": {
+				"te-bandwidth": {
+					"technology": "flexi-grid",
+					"trx_type": "Voyager",
+					"trx_mode": null,
+					"effective-freq-slot": [
+						{
+							"N": "null",
+							"M": "null"
+						}
+					],
+					"spacing": 40e9,
+					"max-nb-of-channel": 100,
+					"output-power": null,
+					"path_bandwidth": 3300e9
+				}
+			}
+		}
+	],
+	"synchronization": []
+}

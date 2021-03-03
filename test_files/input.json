@@ -1,0 +1,218 @@
+{
+	"elements": [
+		{
+			"uid": "Site_A",
+			"type": "Transceiver",
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 0,
+					"city": "Site A",
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Site_A_m",
+			"type": "Roadm",
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 0,
+					"city": "Site A",
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Fiber_(A->B)",
+			"type": "Fiber",
+			"type_variety": "SSMF",
+			"params": {
+				"length": 200.0,
+				"loss_coef": 0.2,
+				"length_units": "km",
+				"att_in": 0,
+				"con_in": 0.5,
+				"con_out": 0.5
+			},
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 0,
+					"city": null,
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Fiber_(B->A)",
+			"type": "Fiber",
+			"type_variety": "SSMF",
+			"params": {
+				"length": 200.0,
+				"loss_coef": 0.2,
+				"length_units": "km",
+				"att_in": 0,
+				"con_in": 0.5,
+				"con_out": 0.5
+			},
+			"metadata": {
+				"location": {
+					"latitude": 0,
+					"longitude": 5,
+					"city": null,
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Site_B_m",
+			"type": "Roadm",
+			"metadata": {
+				"location": {
+					"latitude": 0,
+					"longitude": 5,
+					"city": "Site B",
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Site_B",
+			"type": "Transceiver",
+			"metadata": {
+				"location": {
+					"latitude": 0,
+					"longitude": 5,
+					"city": "Site B",
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Fiber_(B->C)",
+			"type": "Fiber",
+			"type_variety": "SSMF",
+			"params": {
+				"length": 200.0,
+				"loss_coef": 0.2,
+				"length_units": "km",
+				"att_in": 0,
+				"con_in": 0.5,
+				"con_out": 0.5
+			},
+			"metadata": {
+				"location": {
+					"latitude": 0,
+					"longitude": 5,
+					"city": null,
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Fiber_(C->B)",
+			"type": "Fiber",
+			"type_variety": "SSMF",
+			"params": {
+				"length": 200.0,
+				"loss_coef": 0.2,
+				"length_units": "km",
+				"att_in": 0,
+				"con_in": 0.5,
+				"con_out": 0.5
+			},
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 5,
+					"city": null,
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Site_C_m",
+			"type": "Roadm",
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 5,
+					"city": "Site B",
+					"region": ""
+				}
+			}
+		},
+		{
+			"uid": "Site_C",
+			"type": "Transceiver",
+			"metadata": {
+				"location": {
+					"latitude": 5,
+					"longitude": 5,
+					"city": "Site B",
+					"region": ""
+				}
+			}
+		}
+	],
+	"connections": [
+		{
+			"from_node": "Site_A",
+			"to_node": "Site_A_m"
+		},
+		{
+			"from_node": "Site_A_m",
+			"to_node": "Site_A"
+		},
+		{
+			"from_node": "Site_B",
+			"to_node": "Site_B_m"
+		},
+		{
+			"from_node": "Site_B_m",
+			"to_node": "Site_B"
+		},
+		{
+			"from_node": "Site_C",
+			"to_node": "Site_C_m"
+		},
+		{
+			"from_node": "Site_C_m",
+			"to_node": "Site_C"
+		},
+		{
+			"from_node": "Site_A_m",
+			"to_node": "Fiber_(A->B)"
+		},
+		{
+			"from_node": "Fiber_(A->B)",
+			"to_node": "Site_B_m"
+		},
+		{
+			"from_node": "Site_B_m",
+			"to_node": "Fiber_(B->A)"
+		},
+		{
+			"from_node": "Fiber_(B->A)",
+			"to_node": "Site_A_m"
+		},
+		{
+			"from_node": "Site_B_m",
+			"to_node": "Fiber_(B->C)"
+		},
+		{
+			"from_node": "Fiber_(B->C)",
+			"to_node": "Site_C_m"
+		},
+		{
+			"from_node": "Site_C_m",
+			"to_node": "Fiber_(C->B)"
+		},
+		{
+			"from_node": "Fiber_(C->B)",
+			"to_node": "Site_B_m"
+		}
+	]
+}

@@ -12,6 +12,7 @@
 	"author": "Saad",
 	"license": "MIT",
 	"devDependencies": {
+		"@types/node": "^14.14.31",
 		"concurrently": "^6.0.0",
 		"nodemon": "^2.0.7"
 	},

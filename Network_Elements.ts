@@ -52,7 +52,7 @@ export class Transceiver extends GNPY_Node implements Network_Transceiver {
 }
 
 export class Roadm extends GNPY_Node implements Network_Roadm {
-	public params: {
+	public params?: {
 		target_pch_out_db: number;
 		restrictions: {};
 		per_degree_pch_out_db: {};
@@ -61,7 +61,10 @@ export class Roadm extends GNPY_Node implements Network_Roadm {
 	constructor(node: Network_Roadm) {
 		const { uid, type, metadata } = node;
 		super({ uid, type, metadata });
-		this.params = node.params;
+
+		if (node.params) {
+			this.params = node.params;
+		}
 	}
 }
 

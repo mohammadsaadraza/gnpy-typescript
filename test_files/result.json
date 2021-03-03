@@ -1,0 +1,1135 @@
+{
+  "response": [
+    {
+      "response-id": "0",
+      "path-properties": {
+        "path-metric": [
+          {
+            "metric-type": "SNR-bandwidth",
+            "accumulative-value": 20.82
+          },
+          {
+            "metric-type": "SNR-0.1nm",
+            "accumulative-value": 24.9
+          },
+          {
+            "metric-type": "OSNR-bandwidth",
+            "accumulative-value": 21.89
+          },
+          {
+            "metric-type": "OSNR-0.1nm",
+            "accumulative-value": 25.97
+          },
+          {
+            "metric-type": "Transponder",
+            "name": "Voyager",
+            "mode": "mode 1"
+          },
+          {
+            "metric-type": "reference_power",
+            "accumulative-value": 0.001
+          },
+          {
+            "metric-type": "path_bandwidth",
+            "accumulative-value": 100000000000.0
+          },
+          {
+            "metric-type": "num-of-channels",
+            "accumulative-value": 1
+          },
+          {
+            "metric-type": "path-channel-spacing",
+            "accumulative-value": 50000000000.0
+          },
+          {
+            "metric-type": "bit-rate",
+            "accumulative-value": 100000000000.0
+          }
+        ],
+        "path-route-objects": [
+          {
+            "path-route-object": {
+              "index": 0,
+              "num-unnum-hop": {
+                "node-id": "Site_A",
+                "link-tp-id": "Site_A"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 1,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 2,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 3,
+              "num-unnum-hop": {
+                "node-id": "Site_A_m",
+                "link-tp-id": "Site_A_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 4,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 5,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Site_A_m",
+                "link-tp-id": "Edfa0_Site_A_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 6,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 7,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(A->B)_(1/2)",
+                "link-tp-id": "Fiber_(A->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 8,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 9,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(A->B)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(A->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 10,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 11,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(A->B)_(2/2)",
+                "link-tp-id": "Fiber_(A->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 12,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 13,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(A->B)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(A->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 14,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 15,
+              "num-unnum-hop": {
+                "node-id": "Site_B_m",
+                "link-tp-id": "Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 16,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 17,
+              "num-unnum-hop": {
+                "node-id": "Site_B",
+                "link-tp-id": "Site_B"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 18,
+              "label-hop": {
+                "freq_start": 191300000000000.0,
+                "freq_end": 191350000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 19,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "response-id": "1",
+      "path-properties": {
+        "path-metric": [
+          {
+            "metric-type": "SNR-bandwidth",
+            "accumulative-value": 17.8
+          },
+          {
+            "metric-type": "SNR-0.1nm",
+            "accumulative-value": 21.88
+          },
+          {
+            "metric-type": "OSNR-bandwidth",
+            "accumulative-value": 19.05
+          },
+          {
+            "metric-type": "OSNR-0.1nm",
+            "accumulative-value": 23.14
+          },
+          {
+            "metric-type": "Transponder",
+            "name": "Voyager",
+            "mode": "mode 1"
+          },
+          {
+            "metric-type": "reference_power",
+            "accumulative-value": 0.001
+          },
+          {
+            "metric-type": "path_bandwidth",
+            "accumulative-value": 900000000000.0
+          },
+          {
+            "metric-type": "num-of-channels",
+            "accumulative-value": 9
+          },
+          {
+            "metric-type": "path-channel-spacing",
+            "accumulative-value": 50000000000.0
+          },
+          {
+            "metric-type": "bit-rate",
+            "accumulative-value": 100000000000.0
+          }
+        ],
+        "z-a-path-metric": [
+          {
+            "metric-type": "SNR-bandwidth",
+            "accumulative-value": 17.8
+          },
+          {
+            "metric-type": "SNR-0.1nm",
+            "accumulative-value": 21.88
+          },
+          {
+            "metric-type": "OSNR-bandwidth",
+            "accumulative-value": 19.05
+          },
+          {
+            "metric-type": "OSNR-0.1nm",
+            "accumulative-value": 23.14
+          },
+          {
+            "metric-type": "Transponder",
+            "name": "Voyager",
+            "mode": "mode 1"
+          },
+          {
+            "metric-type": "reference_power",
+            "accumulative-value": 0.001
+          },
+          {
+            "metric-type": "path_bandwidth",
+            "accumulative-value": 900000000000.0
+          },
+          {
+            "metric-type": "num-of-channels",
+            "accumulative-value": 9
+          },
+          {
+            "metric-type": "path-channel-spacing",
+            "accumulative-value": 50000000000.0
+          },
+          {
+            "metric-type": "bit-rate",
+            "accumulative-value": 100000000000.0
+          }
+        ],
+        "path-route-objects": [
+          {
+            "path-route-object": {
+              "index": 0,
+              "num-unnum-hop": {
+                "node-id": "Site_A",
+                "link-tp-id": "Site_A"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 1,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 2,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 3,
+              "num-unnum-hop": {
+                "node-id": "Site_A_m",
+                "link-tp-id": "Site_A_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 4,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 5,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Site_A_m",
+                "link-tp-id": "Edfa0_Site_A_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 6,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 7,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(A->B)_(1/2)",
+                "link-tp-id": "Fiber_(A->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 8,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 9,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(A->B)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(A->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 10,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 11,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(A->B)_(2/2)",
+                "link-tp-id": "Fiber_(A->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 12,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 13,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(A->B)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(A->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 14,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 15,
+              "num-unnum-hop": {
+                "node-id": "Site_B_m",
+                "link-tp-id": "Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 16,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 17,
+              "num-unnum-hop": {
+                "node-id": "Edfa1_Site_B_m",
+                "link-tp-id": "Edfa1_Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 18,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 19,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->C)_(1/2)",
+                "link-tp-id": "Fiber_(B->C)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 20,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 21,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->C)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->C)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 22,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 23,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->C)_(2/2)",
+                "link-tp-id": "Fiber_(B->C)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 24,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 25,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->C)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->C)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 26,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 27,
+              "num-unnum-hop": {
+                "node-id": "Site_C_m",
+                "link-tp-id": "Site_C_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 28,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 29,
+              "num-unnum-hop": {
+                "node-id": "Site_C",
+                "link-tp-id": "Site_C"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 30,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 31,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          }
+        ],
+        "reverse_path_route_objects": [
+          {
+            "path-route-object": {
+              "index": 0,
+              "num-unnum-hop": {
+                "node-id": "Site_C",
+                "link-tp-id": "Site_C"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 1,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 2,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 3,
+              "num-unnum-hop": {
+                "node-id": "Site_C_m",
+                "link-tp-id": "Site_C_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 4,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 5,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Site_C_m",
+                "link-tp-id": "Edfa0_Site_C_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 6,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 7,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(C->B)_(1/2)",
+                "link-tp-id": "Fiber_(C->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 8,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 9,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(C->B)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(C->B)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 10,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 11,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(C->B)_(2/2)",
+                "link-tp-id": "Fiber_(C->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 12,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 13,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(C->B)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(C->B)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 14,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 15,
+              "num-unnum-hop": {
+                "node-id": "Site_B_m",
+                "link-tp-id": "Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 16,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 17,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Site_B_m",
+                "link-tp-id": "Edfa0_Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 18,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 19,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->A)_(1/2)",
+                "link-tp-id": "Fiber_(B->A)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 20,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 21,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->A)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->A)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 22,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 23,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->A)_(2/2)",
+                "link-tp-id": "Fiber_(B->A)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 24,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 25,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->A)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->A)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 26,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 27,
+              "num-unnum-hop": {
+                "node-id": "Site_A_m",
+                "link-tp-id": "Site_A_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 28,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 29,
+              "num-unnum-hop": {
+                "node-id": "Site_A",
+                "link-tp-id": "Site_A"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 30,
+              "label-hop": {
+                "freq_start": 191350000000000.0,
+                "freq_end": 191800000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 31,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "response-id": "2",
+      "path-properties": {
+        "path-metric": [
+          {
+            "metric-type": "SNR-bandwidth",
+            "accumulative-value": 20.47
+          },
+          {
+            "metric-type": "SNR-0.1nm",
+            "accumulative-value": 24.55
+          },
+          {
+            "metric-type": "OSNR-bandwidth",
+            "accumulative-value": 21.87
+          },
+          {
+            "metric-type": "OSNR-0.1nm",
+            "accumulative-value": 25.95
+          },
+          {
+            "metric-type": "Transponder",
+            "name": "Voyager",
+            "mode": "mode 1"
+          },
+          {
+            "metric-type": "reference_power",
+            "accumulative-value": 0.001
+          },
+          {
+            "metric-type": "path_bandwidth",
+            "accumulative-value": 3300000000000.0
+          },
+          {
+            "metric-type": "num-of-channels",
+            "accumulative-value": 33
+          },
+          {
+            "metric-type": "path-channel-spacing",
+            "accumulative-value": 40000000000.0
+          },
+          {
+            "metric-type": "bit-rate",
+            "accumulative-value": 100000000000.0
+          }
+        ],
+        "path-route-objects": [
+          {
+            "path-route-object": {
+              "index": 0,
+              "num-unnum-hop": {
+                "node-id": "Site_B",
+                "link-tp-id": "Site_B"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 1,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 2,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 3,
+              "num-unnum-hop": {
+                "node-id": "Site_B_m",
+                "link-tp-id": "Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 4,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 5,
+              "num-unnum-hop": {
+                "node-id": "Edfa1_Site_B_m",
+                "link-tp-id": "Edfa1_Site_B_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 6,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 7,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->C)_(1/2)",
+                "link-tp-id": "Fiber_(B->C)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 8,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 9,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->C)_(1/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->C)_(1/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 10,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 11,
+              "num-unnum-hop": {
+                "node-id": "Fiber_(B->C)_(2/2)",
+                "link-tp-id": "Fiber_(B->C)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 12,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 13,
+              "num-unnum-hop": {
+                "node-id": "Edfa0_Fiber_(B->C)_(2/2)",
+                "link-tp-id": "Edfa0_Fiber_(B->C)_(2/2)"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 14,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 15,
+              "num-unnum-hop": {
+                "node-id": "Site_C_m",
+                "link-tp-id": "Site_C_m"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 16,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 17,
+              "num-unnum-hop": {
+                "node-id": "Site_C",
+                "link-tp-id": "Site_C"
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 18,
+              "label-hop": {
+                "freq_start": 191800000000000.0,
+                "freq_end": 193450000000000.0
+              }
+            }
+          },
+          {
+            "path-route-object": {
+              "index": 19,
+              "transponder": {
+                "transponder-type": "Voyager",
+                "transponder-mode": "mode 1"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

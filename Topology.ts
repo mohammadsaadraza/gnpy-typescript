@@ -32,8 +32,8 @@ export class PhysicalTopology {
 
 	json(): Object {
 		return {
-			elements: this.elementList,
-			connections: this.connectionList,
+			elements: this.elementList.elements,
+			connections: this.connectionList.list,
 		};
 	}
 }
