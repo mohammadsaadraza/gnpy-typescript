@@ -7,6 +7,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectionList = exports.ElementCollection = void 0;
 var Network_Elements_1 = require("./Network_Elements");
+var lodash_1 = require("lodash");
 var ElementCollection = /** @class */ (function () {
     function ElementCollection(arr) {
         var _this = this;
@@ -16,10 +17,10 @@ var ElementCollection = /** @class */ (function () {
         this.amplifiers = [];
         this.fibers = [];
         if (arr) {
-            arr.map(function (e) { return _this.push(e); });
+            arr.map(function (e) { return _this.addElement(e); });
         }
     }
-    ElementCollection.prototype.push = function (element) {
+    ElementCollection.prototype.addElement = function (element) {
         if (element instanceof Network_Elements_1.Transceiver) {
             this.transceivers.push(element);
         }
@@ -37,6 +38,31 @@ var ElementCollection = /** @class */ (function () {
         }
         this.elements.push(element);
     };
+    ElementCollection.prototype.removeElement = function (element) {
+        if (element instanceof Network_Elements_1.Transceiver) {
+            this.transceivers = this.transceivers.filter(function (value) { return !lodash_1.isEqual(element, value); });
+        }
+        else if (element instanceof Network_Elements_1.Roadm) {
+            this.roadms = this.roadms.filter(function (value) { return !lodash_1.isEqual(element, value); });
+        }
+        else if (element instanceof Network_Elements_1.Fiber) {
+            this.fibers = this.fibers.filter(function (value) { return !lodash_1.isEqual(element, value); });
+        }
+        else if (element instanceof Network_Elements_1.Edfa) {
+            this.amplifiers = this.amplifiers.filter(function (value) { return !lodash_1.isEqual(element, value); });
+        }
+        else {
+            throw new Error("Incorrect Element. Supported Elements are Transceiver, Roadm, Fibre, Edfa");
+        }
+        this.elements = this.elements.filter(function (value) { return !lodash_1.isEqual(element, value); });
+    };
+    Object.defineProperty(ElementCollection.prototype, "json", {
+        get: function () {
+            return this.elements;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(ElementCollection.prototype, "transceiverList", {
         get: function () {
             return this.transceivers;
@@ -75,6 +101,13 @@ var ConnectionList = /** @class */ (function () {
             this.list = arr;
         }
     }
+    Object.defineProperty(ConnectionList.prototype, "json", {
+        get: function () {
+            return this.list;
+        },
+        enumerable: false,
+        configurable: true
+    });
     ConnectionList.prototype.addConnection = function (transceiver, roadm) {
         /* connect transceiver with roadm */
         this.list = __spreadArray([
@@ -87,6 +120,23 @@ var ConnectionList = /** @class */ (function () {
                 to_node: transceiver.uid,
             }
         ], this.list);
+    };
+    ConnectionList.prototype.removeConnection = function (transceiver, roadm) {
+        var _this = this;
+        [
+            {
+                from_node: transceiver.uid,
+                to_node: roadm.uid,
+            },
+            {
+                from_node: roadm.uid,
+                to_node: transceiver.uid,
+            },
+        ].forEach(function (conn) {
+            _this.list = _this.list.filter(function (value) {
+                return !lodash_1.isEqual(conn, value);
+            });
+        });
     };
     ConnectionList.prototype.addPath = function (roadm_A, fiber_AB, roadm_B, fiber_BA) {
         /* add a bi-directional fiber path from roadm_A to roadm_B*/

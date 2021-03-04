@@ -57,7 +57,7 @@ var tran = new Network_Elements_1.Transceiver({
 });
 var roadm = new Network_Elements_1.Roadm({
     uid: "djvnjfddvdvdvcvnc",
-    type: "Transceiver",
+    type: "Roadm",
     metadata: {
         location: {
             latitude: 0,
@@ -67,9 +67,11 @@ var roadm = new Network_Elements_1.Roadm({
         },
     },
 });
-top.addElement(tran);
-top.addElement(roadm);
-top.addConnection(tran, roadm);
+top.elements.addElement(tran);
+top.elements.addElement(roadm);
+top.elements.removeElement(roadm);
+// top.connections.addConnection(tran, roadm);
+// top.connections.removeConnection(tran, roadm);
 var fileWrite = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {

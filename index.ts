@@ -18,7 +18,7 @@ const tran = new Transceiver({
 });
 const roadm = new Roadm({
 	uid: "djvnjfddvdvdvcvnc",
-	type: "Transceiver",
+	type: "Roadm",
 	metadata: {
 		location: {
 			latitude: 0,
@@ -28,10 +28,13 @@ const roadm = new Roadm({
 		},
 	},
 });
-top.addElement(tran);
-top.addElement(roadm);
+top.elements.addElement(tran);
+top.elements.addElement(roadm);
 
-top.addConnection(tran, roadm);
+// top.elements.removeElement(roadm);
+
+top.connections.addConnection(tran, roadm);
+// top.connections.removeConnection(tran, roadm);
 
 const fileWrite = async () => {
 	await fs.writeFileSync("./ex.json", JSON.stringify(top.json(), null, 2));

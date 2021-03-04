@@ -1,5 +1,6 @@
 import { Network_Node } from "./Network_Defs";
 import { Transceiver, Roadm, Fiber, Edfa } from "./Network_Elements";
+import { isEqual } from "lodash";
 
 export interface Connection {
 	from_node: string;
@@ -7,7 +8,7 @@ export interface Connection {
 }
 
 export class ElementCollection {
-	elements: Network_Node[] = [];
+	private elements: Network_Node[] = [];
 
 	private transceivers: Transceiver[] = [];
 	private roadms: Roadm[] = [];
@@ -16,11 +17,11 @@ export class ElementCollection {
 
 	constructor(arr?: Network_Node[]) {
 		if (arr) {
-			arr.map((e) => this.push(e));
+			arr.map((e) => this.addElement(e));
 		}
 	}
 
-	push(element: Network_Node) {
+	addElement(element: Network_Node) {
 		if (element instanceof Transceiver) {
 			this.transceivers.push(element);
 		} else if (element instanceof Roadm) {
@@ -35,6 +36,37 @@ export class ElementCollection {
 			);
 		}
 		this.elements.push(element);
+	}
+
+	removeElement(element: Network_Node) {
+		if (element instanceof Transceiver) {
+			this.transceivers = this.transceivers.filter(
+				(value) => !isEqual(element, value)
+			);
+		} else if (element instanceof Roadm) {
+			this.roadms = this.roadms.filter(
+				(value) => !isEqual(element, value)
+			);
+		} else if (element instanceof Fiber) {
+			this.fibers = this.fibers.filter(
+				(value) => !isEqual(element, value)
+			);
+		} else if (element instanceof Edfa) {
+			this.amplifiers = this.amplifiers.filter(
+				(value) => !isEqual(element, value)
+			);
+		} else {
+			throw new Error(
+				"Incorrect Element. Supported Elements are Transceiver, Roadm, Fibre, Edfa"
+			);
+		}
+		this.elements = this.elements.filter(
+			(value) => !isEqual(element, value)
+		);
+	}
+
+	get json() {
+		return this.elements;
 	}
 
 	get transceiverList(): Transceiver[] {
@@ -52,12 +84,16 @@ export class ElementCollection {
 }
 
 export class ConnectionList {
-	list: Connection[] = [];
+	private list: Connection[] = [];
 
 	constructor(arr?: Connection[]) {
 		if (arr) {
 			this.list = arr;
 		}
+	}
+
+	get json() {
+		return this.list;
 	}
 
 	addConnection(transceiver: Transceiver, roadm: Roadm) {
@@ -75,7 +111,24 @@ export class ConnectionList {
 		];
 	}
 
-	addPath(roadm_A: Roadm, fiber_AB: Fiber, roadm_B: Roadm, fiber_BA: Fiber) {
+	removeConnection(transceiver: Transceiver, roadm: Roadm) {
+		[
+			{
+				from_node: transceiver.uid,
+				to_node: roadm.uid,
+			},
+			{
+				from_node: roadm.uid,
+				to_node: transceiver.uid,
+			},
+		].forEach((conn: Connection) => {
+			this.list = this.list.filter((value) => {
+				return !isEqual(conn, value);
+			});
+		});
+	}
+
+	addLink(roadm_A: Roadm, fiber_AB: Fiber, roadm_B: Roadm, fiber_BA: Fiber) {
 		/* add a bi-directional fiber path from roadm_A to roadm_B*/
 		this.list = [
 			{
@@ -96,5 +149,36 @@ export class ConnectionList {
 			},
 			...this.list,
 		];
+	}
+
+	removeLink(
+		roadm_A: Roadm,
+		fiber_AB: Fiber,
+		roadm_B: Roadm,
+		fiber_BA: Fiber
+	) {
+		/* add a bi-directional fiber path from roadm_A to roadm_B*/
+		[
+			{
+				from_node: roadm_A.uid,
+				to_node: fiber_AB.uid,
+			},
+			{
+				from_node: fiber_AB.uid,
+				to_node: roadm_B.uid,
+			},
+			{
+				from_node: roadm_B.uid,
+				to_node: fiber_BA.uid,
+			},
+			{
+				from_node: fiber_BA.uid,
+				to_node: roadm_A.uid,
+			},
+		].forEach((conn: Connection) => {
+			this.list = this.list.filter((value) => {
+				return !isEqual(conn, value);
+			});
+		});
 	}
 }

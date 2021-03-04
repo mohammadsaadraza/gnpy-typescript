@@ -11,28 +11,7 @@
           "region": ""
         }
       }
-    },
-    {
-      "uid": "djvnjfddvdvdvcvnc",
-      "type": "Transceiver",
-      "metadata": {
-        "location": {
-          "latitude": 0,
-          "longitude": 5,
-          "city": "",
-          "region": ""
-        }
-      }
     }
   ],
-  "connections": [
-    {
-      "from_node": "djvnjcvnc",
-      "to_node": "djvnjfddvdvdvcvnc"
-    },
-    {
-      "from_node": "djvnjfddvdvdvcvnc",
-      "to_node": "djvnjcvnc"
-    }
-  ]
+  "connections": []
 }
