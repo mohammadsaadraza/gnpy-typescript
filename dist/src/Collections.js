@@ -18,31 +18,25 @@ var ElementCollection = /** @class */ (function () {
         this.amplifiers = [];
         this.fibers = [];
         if (arr) {
-            arr.map(function (e) { return _this.addElement(e); });
+            arr.forEach(function (e, i) {
+                switch (e.type) {
+                    case "Transceiver":
+                        return _this.add(new Network_Elements_1.Transceiver(e));
+                    case "Roadm":
+                        return _this.add(new Network_Elements_1.Roadm(e));
+                    case "Fiber":
+                        return _this.add(new Network_Elements_1.Fiber(e));
+                    case "Edfa":
+                        return _this.add(new Network_Elements_1.Edfa(e));
+                }
+            });
         }
     }
-    ElementCollection.prototype.getElement = function (uid) {
-        var _this = this;
+    ElementCollection.prototype.get = function (uid) {
         /* Finds element , if found returns the class object else returns undefined*/
-        var identifiers;
-        if (typeof uid === "string") {
-            identifiers = [uid];
-        }
-        else {
-            identifiers = uid;
-        }
-        var elems = [];
-        identifiers.forEach(function (val) {
-            if (!_this.ids.has(val)) {
-                return;
-            }
-            elems.push(lodash_1.find(_this.elements, function (o) { return val == o.uid; }));
-        });
-        if (!elems.length)
-            return undefined;
-        return elems.length == 1 ? elems[0] : elems;
+        return lodash_1.find(this.elements, function (o) { return uid === o.uid; });
     };
-    ElementCollection.prototype.addElement = function (element) {
+    ElementCollection.prototype.add = function (element) {
         if (this.ids.has(element.uid)) {
             throw new Error("Element of uid \"" + element.uid + "\" already exists. Use a different identifier.");
         }
@@ -64,8 +58,7 @@ var ElementCollection = /** @class */ (function () {
         this.ids.add(element.uid);
         this.elements.push(element);
     };
-    ElementCollection.prototype.removeElement = function (uid, type) {
-        if (type === void 0) { type = null; }
+    ElementCollection.prototype.remove = function (uid, type) {
         /* Finds element , if found returns the class object else returns undefined*/
         if (!this.ids.has(uid)) {
             throw new Error("Element doesn't exist");
@@ -73,12 +66,16 @@ var ElementCollection = /** @class */ (function () {
         switch (type) {
             case "Transceiver":
                 this.transceivers = lodash_1.filter(this.transceivers, function (o) { return uid !== o.uid; });
+                break;
             case "Roadm":
                 this.roadms = lodash_1.filter(this.roadms, function (o) { return uid !== o.uid; });
+                break;
             case "Fiber":
                 this.fibers = lodash_1.filter(this.fibers, function (o) { return uid !== o.uid; });
+                break;
             case "Edfa":
                 this.amplifiers = lodash_1.filter(this.amplifiers, function (o) { return uid !== o.uid; });
+                break;
             default:
                 this.elements = lodash_1.filter(this.elements, function (o) { return uid !== o.uid; });
         }

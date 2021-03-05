@@ -1,6 +1,13 @@
-import { Network_Node } from "./Network_Defs";
-import { Transceiver, Roadm, Fiber, Edfa } from "./Network_Elements";
-import { isEqual } from "lodash";
+import {
+	Network_Node,
+	NetworkElement,
+	Network_Transceiver,
+	Network_Fiber,
+	Network_Roadm,
+	Network_Edfa,
+} from "./Network_Defs";
+import { Transceiver, Roadm, Fiber, Edfa, GNPY_Node } from "./Network_Elements";
+import { isEqual, find, filter } from "lodash";
 
 export interface Connection {
 	from_node: string;
@@ -10,6 +17,8 @@ export interface Connection {
 export class ElementCollection {
 	private elements: Network_Node[] = [];
 
+	private ids: Set<string> = new Set();
+
 	private transceivers: Transceiver[] = [];
 	private roadms: Roadm[] = [];
 	private amplifiers: Edfa[] = [];
@@ -17,11 +26,35 @@ export class ElementCollection {
 
 	constructor(arr?: Network_Node[]) {
 		if (arr) {
-			arr.map((e) => this.addElement(e));
+			arr.forEach((e, i) => {
+				switch (e.type) {
+					case "Transceiver":
+						return this.add(
+							new Transceiver(e as Network_Transceiver)
+						);
+					case "Roadm":
+						return this.add(new Roadm(e as Network_Roadm));
+					case "Fiber":
+						return this.add(new Fiber(e as Network_Fiber));
+					case "Edfa":
+						return this.add(new Edfa(e as Network_Edfa));
+				}
+			});
 		}
 	}
 
-	addElement(element: Network_Node) {
+	get(uid: string): Network_Node | undefined {
+		/* Finds element , if found returns the class object else returns undefined*/
+		return find(this.elements, (o) => uid === o.uid);
+	}
+
+	add(element: Network_Node) {
+		if (this.ids.has(element.uid)) {
+			throw new Error(
+				`Element of uid "${element.uid}" already exists. Use a different identifier.`
+			);
+		}
+
 		if (element instanceof Transceiver) {
 			this.transceivers.push(element);
 		} else if (element instanceof Roadm) {
@@ -35,34 +68,40 @@ export class ElementCollection {
 				"Incorrect Element. Supported Elements are Transceiver, Roadm, Fibre, Edfa"
 			);
 		}
+		this.ids.add(element.uid);
 		this.elements.push(element);
 	}
 
-	removeElement(element: Network_Node) {
-		if (element instanceof Transceiver) {
-			this.transceivers = this.transceivers.filter(
-				(value) => !isEqual(element, value)
-			);
-		} else if (element instanceof Roadm) {
-			this.roadms = this.roadms.filter(
-				(value) => !isEqual(element, value)
-			);
-		} else if (element instanceof Fiber) {
-			this.fibers = this.fibers.filter(
-				(value) => !isEqual(element, value)
-			);
-		} else if (element instanceof Edfa) {
-			this.amplifiers = this.amplifiers.filter(
-				(value) => !isEqual(element, value)
-			);
-		} else {
-			throw new Error(
-				"Incorrect Element. Supported Elements are Transceiver, Roadm, Fibre, Edfa"
-			);
+	remove(uid: string, type: NetworkElement) {
+		/* Finds element , if found returns the class object else returns undefined*/
+		if (!this.ids.has(uid)) {
+			throw new Error(`Element doesn't exist`);
 		}
-		this.elements = this.elements.filter(
-			(value) => !isEqual(element, value)
-		);
+
+		switch (type) {
+			case "Transceiver":
+				this.transceivers = filter(
+					this.transceivers,
+					(o) => uid !== o.uid
+				);
+				break;
+			case "Roadm":
+				this.roadms = filter(this.roadms, (o) => uid !== o.uid);
+				break;
+			case "Fiber":
+				this.fibers = filter(this.fibers, (o) => uid !== o.uid);
+				break;
+			case "Edfa":
+				this.amplifiers = filter(this.amplifiers, (o) => uid !== o.uid);
+				break;
+			default:
+				this.elements = filter(this.elements, (o) => uid !== o.uid);
+		}
+		this.ids.delete(uid);
+	}
+
+	get uids() {
+		return this.ids;
 	}
 
 	get json() {
