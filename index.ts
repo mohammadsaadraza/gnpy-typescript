@@ -3,17 +3,56 @@ import { ElementCollection, ConnectionList } from "./src/Collections";
 import { Transceiver, Roadm, Fiber, Edfa } from "./src/Network_Elements";
 import fs from "fs";
 import { Network_Node } from "./src/Network_Defs";
+import {
+	PathConstraints,
+	PathRequest,
+	PathRequest_Collection,
+} from "./src/Request";
 
-let input = JSON.parse(fs.readFileSync("./test_files/input.json").toString());
-const Topology = new PhysicalTopology(
-	new ElementCollection(input.elements),
-	new ConnectionList(input.connections)
-);
-const A = Topology.elements.get("Site_A");
-if (A) {
-	Topology.elements.remove(A.uid, A.type);
-}
-console.log(Topology.connections.json);
+const r1 = new PathRequest({
+	request_id: "r1",
+	source: "Site_B",
+	destination: "Site_C",
+	bidirectional: false,
+	path_constraints: new PathConstraints({
+		technology: "flexi-grid",
+		trx_type: "Voyager",
+		trx_mode: null,
+		spacing: 40e9,
+		max_channels: 100,
+		output_power: null,
+		path_bandwidth: 500e9,
+	}),
+});
+const r2 = new PathRequest({
+	request_id: "r2",
+	source: "Site_A",
+	destination: "Site_C",
+	bidirectional: false,
+	path_constraints: new PathConstraints({
+		technology: "flexi-grid",
+		trx_type: "Voyager",
+		trx_mode: null,
+		spacing: 40e9,
+		max_channels: 100,
+		output_power: null,
+		path_bandwidth: 500e9,
+	}),
+});
+const c = new PathRequest_Collection([r1, r2]);
+// c.remove(r2.request_id);
+console.log(c.json);
+
+// let input = JSON.parse(fs.readFileSync("./test_files/input.json").toString());
+// const Topology = new PhysicalTopology(
+// 	new ElementCollection(input.elements),
+// 	new ConnectionList(input.connections)
+// );
+// const A = Topology.elements.get("Site_A");
+// if (A) {
+// 	Topology.elements.remove(A.uid, A.type);
+// }
+// console.log(Topology.connections.json);
 
 // console.log(input);
 
