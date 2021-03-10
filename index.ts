@@ -8,40 +8,45 @@ import {
 	PathRequest,
 	PathRequest_Collection,
 } from "./src/Request";
+import { LightPath, LigthPath_Collection } from "./src/Response";
 
-const r1 = new PathRequest({
-	request_id: "r1",
-	source: "Site_B",
-	destination: "Site_C",
-	bidirectional: false,
-	path_constraints: new PathConstraints({
-		technology: "flexi-grid",
-		trx_type: "Voyager",
-		trx_mode: null,
-		spacing: 40e9,
-		max_channels: 100,
-		output_power: null,
-		path_bandwidth: 500e9,
-	}),
-});
-const r2 = new PathRequest({
-	request_id: "r2",
-	source: "Site_A",
-	destination: "Site_C",
-	bidirectional: false,
-	path_constraints: new PathConstraints({
-		technology: "flexi-grid",
-		trx_type: "Voyager",
-		trx_mode: null,
-		spacing: 40e9,
-		max_channels: 100,
-		output_power: null,
-		path_bandwidth: 500e9,
-	}),
-});
-const c = new PathRequest_Collection([r1, r2]);
+let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
+const lights = new LigthPath_Collection(input);
+console.log(lights.get("1"));
+
+// const r1 = new PathRequest({
+// 	request_id: "r1",
+// 	source: "Site_B",
+// 	destination: "Site_C",
+// 	bidirectional: false,
+// 	path_constraints: new PathConstraints({
+// 		technology: "flexi-grid",
+// 		trx_type: "Voyager",
+// 		trx_mode: null,
+// 		spacing: 40e9,
+// 		max_channels: 100,
+// 		output_power: null,
+// 		path_bandwidth: 500e9,
+// 	}),
+// });
+// const r2 = new PathRequest({
+// 	request_id: "r2",
+// 	source: "Site_A",
+// 	destination: "Site_C",
+// 	bidirectional: false,
+// 	path_constraints: new PathConstraints({
+// 		technology: "flexi-grid",
+// 		trx_type: "Voyager",
+// 		trx_mode: null,
+// 		spacing: 40e9,
+// 		max_channels: 100,
+// 		output_power: null,
+// 		path_bandwidth: 500e9,
+// 	}),
+// });
+// const c = new PathRequest_Collection([r1, r2]);
 // c.remove(r2.request_id);
-console.log(c.json);
+// console.log(c.json);
 
 // let input = JSON.parse(fs.readFileSync("./test_files/input.json").toString());
 // const Topology = new PhysicalTopology(
