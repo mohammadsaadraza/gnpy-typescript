@@ -1,7 +1,7 @@
 {
 	"path-request": [
 		{
-			"request-id": "0",
+			"request-id": "r0",
 			"source": "Site_A",
 			"destination": "Site_B",
 			"src-tp-id": "Site_A",
@@ -12,25 +12,36 @@
 					"technology": "flexi-grid",
 					"trx_type": "Voyager",
 					"trx_mode": null,
-					"effective-freq-slot": [
-						{
-							"N": "null",
-							"M": "null"
-						}
-					],
 					"spacing": 50e9,
 					"max-nb-of-channel": 50,
-					"output-power": null,
+					"output-power": 40,
 					"path_bandwidth": 100e9
 				}
 			}
 		},
 		{
-			"request-id": "1",
+			"request-id": "r0_d",
+			"source": "Site_A",
+			"destination": "Site_B",
+			"src-tp-id": "Site_A",
+			"dst-tp-id": "Site_B",
+			"bidirectional": false,
+			"path-constraints": {
+				"te-bandwidth": {
+					"technology": "flexi-grid",
+					"trx_type": "Voyager",
+					"trx_mode": null,
+					"spacing": 50e9,
+					"max-nb-of-channel": 50,
+					"output-power": 40,
+					"path_bandwidth": 100e9
+				}
+			}
+		},
+		{
+			"request-id": "r1",
 			"source": "Site_A",
 			"destination": "Site_C",
-			"src-tp-id": "Site_A",
-			"dst-tp-id": "Site_C",
 			"bidirectional": true,
 			"path-constraints": {
 				"te-bandwidth": {
@@ -39,42 +50,43 @@
 					"trx_mode": null,
 					"effective-freq-slot": [
 						{
-							"N": "null",
-							"M": "null"
+							"N": null,
+							"M": null
 						}
 					],
 					"spacing": 50e9,
 					"max-nb-of-channel": 110,
-					"output-power": null,
+					"output-power": 40,
 					"path_bandwidth": 900e9
 				}
 			}
 		},
 		{
-			"request-id": "2",
+			"request-id": "r2",
 			"source": "Site_B",
 			"destination": "Site_C",
-			"src-tp-id": "Site_B",
-			"dst-tp-id": "Site_C",
 			"bidirectional": false,
 			"path-constraints": {
 				"te-bandwidth": {
 					"technology": "flexi-grid",
 					"trx_type": "Voyager",
 					"trx_mode": null,
-					"effective-freq-slot": [
-						{
-							"N": "null",
-							"M": "null"
-						}
-					],
 					"spacing": 40e9,
 					"max-nb-of-channel": 100,
-					"output-power": null,
-					"path_bandwidth": 3300e9
+					"output-power": 40,
+					"path_bandwidth": 500e9
 				}
 			}
 		}
 	],
-	"synchronization": []
+	"synchronization": [
+		{
+			"synchronization-id": "r0",
+			"svec": {
+				"relaxable": "true",
+				"disjointness": "node",
+				"request-id-number": ["r0", "r0_d"]
+			}
+		}
+	]
 }

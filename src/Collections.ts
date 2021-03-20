@@ -94,9 +94,9 @@ export class ElementCollection {
 			case "Edfa":
 				this.amplifiers = filter(this.amplifiers, (o) => uid !== o.uid);
 				break;
-			default:
-				this.elements = filter(this.elements, (o) => uid !== o.uid);
 		}
+
+		this.elements = filter(this.elements, (o) => uid !== o.uid);
 		this.ids.delete(uid);
 	}
 

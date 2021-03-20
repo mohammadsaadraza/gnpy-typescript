@@ -212,7 +212,7 @@ export interface JSONInput {
 }
 
 export class LigthPath_Collection {
-	lightpaths: LightPath[] = [];
+	private lightpaths: LightPath[] = [];
 
 	constructor(obj: JSONInput) {
 		this.lightpaths = map(obj.response, (e: ResponseObject) => {

@@ -34,7 +34,7 @@ var GNPY_Node = /** @class */ (function () {
     });
     Object.defineProperty(GNPY_Node.prototype, "info", {
         get: function () {
-            return this.metadata.location.city + ", " + this.metadata.location.region;
+            return "" + this.metadata.location.city;
         },
         enumerable: false,
         configurable: true

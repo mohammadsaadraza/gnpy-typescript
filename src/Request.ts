@@ -1,6 +1,6 @@
 import { forEach, filter, find, map } from "lodash";
 
-interface ConstraintsObject {
+export interface ConstraintsObject {
 	technology: string;
 	trx_type: string;
 	trx_mode: string | null;
@@ -10,12 +10,21 @@ interface ConstraintsObject {
 	path_bandwidth: number;
 }
 
-interface RequestObject {
+export interface RequestObject {
 	request_id: string;
 	source: string;
 	destination: string;
 	bidirectional: boolean;
 	path_constraints: ConstraintsObject;
+}
+
+export interface SynchronizationObject {
+	sync_id: string;
+	svec: {
+		relaxable: string;
+		disjointness: string;
+		request_id_number: [string, string];
+	};
 }
 
 export class PathConstraints implements ConstraintsObject {
@@ -80,6 +89,69 @@ export class PathRequest implements RequestObject {
 			bidirectional: this.bidirectional,
 			"path-constraints": this.path_constraints.json,
 		};
+	}
+
+	copy(new_id: string) {
+		const obj = new PathRequest(this);
+		obj.request_id = new_id;
+		return obj;
+	}
+}
+
+export class SynchronizationVector implements SynchronizationObject {
+	sync_id: string;
+	svec: {
+		relaxable: string;
+		disjointness: string;
+		request_id_number: [string, string];
+	};
+
+	constructor(obj: SynchronizationObject) {
+		this.sync_id = obj.sync_id;
+		this.svec = obj.svec;
+	}
+
+	get json() {
+		return {
+			"synchronization-id": this.sync_id,
+			svec: {
+				relaxable: this.svec.relaxable,
+				disjointness: this.svec.disjointness,
+				"request-id-number": this.svec.request_id_number,
+			},
+		};
+	}
+}
+
+export class SyncVector_Collection {
+	private syncVectors: SynchronizationVector[] = [];
+
+	constructor(sVecs?: SynchronizationObject[]) {
+		if (sVecs) {
+			forEach(sVecs, (e) => {
+				if (e instanceof SynchronizationVector) {
+					this.syncVectors.push(e);
+				} else {
+					this.syncVectors.push(new SynchronizationVector(e));
+				}
+			});
+		}
+	}
+
+	add(obj: SynchronizationObject): void {
+		this.syncVectors.push(new SynchronizationVector(obj));
+	}
+
+	remove(id: string): void {
+		this.syncVectors = filter(this.syncVectors, (e) => e.sync_id !== id);
+	}
+
+	get(id: string): SynchronizationVector | undefined {
+		return find(this.syncVectors, (e) => id === e.sync_id);
+	}
+
+	get json() {
+		return map(this.syncVectors, (e) => e.json);
 	}
 }
 

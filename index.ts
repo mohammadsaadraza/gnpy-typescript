@@ -7,48 +7,62 @@ import {
 	PathConstraints,
 	PathRequest,
 	PathRequest_Collection,
+	SyncVector_Collection,
+	SynchronizationVector,
 } from "./src/Request";
 import { LightPath, LigthPath_Collection } from "./src/Response";
+import { ServiceRequests } from "./src/Service";
 
-let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
-const lights = new LigthPath_Collection(input);
-console.log(lights.get("1"));
+// let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
+// const lights = new LigthPath_Collection(input);
+// console.log(lights.get("1"));
 
-// const r1 = new PathRequest({
-// 	request_id: "r1",
-// 	source: "Site_B",
-// 	destination: "Site_C",
-// 	bidirectional: false,
-// 	path_constraints: new PathConstraints({
-// 		technology: "flexi-grid",
-// 		trx_type: "Voyager",
-// 		trx_mode: null,
-// 		spacing: 40e9,
-// 		max_channels: 100,
-// 		output_power: null,
-// 		path_bandwidth: 500e9,
-// 	}),
-// });
-// const r2 = new PathRequest({
-// 	request_id: "r2",
-// 	source: "Site_A",
-// 	destination: "Site_C",
-// 	bidirectional: false,
-// 	path_constraints: new PathConstraints({
-// 		technology: "flexi-grid",
-// 		trx_type: "Voyager",
-// 		trx_mode: null,
-// 		spacing: 40e9,
-// 		max_channels: 100,
-// 		output_power: null,
-// 		path_bandwidth: 500e9,
-// 	}),
-// });
-// const c = new PathRequest_Collection([r1, r2]);
-// c.remove(r2.request_id);
-// console.log(c.json);
+const r1 = new PathRequest({
+	request_id: "r1",
+	source: "Site_B",
+	destination: "Site_C",
+	bidirectional: false,
+	path_constraints: new PathConstraints({
+		technology: "flexi-grid",
+		trx_type: "Voyager",
+		trx_mode: null,
+		spacing: 40e9,
+		max_channels: 100,
+		output_power: null,
+		path_bandwidth: 500e9,
+	}),
+});
+const r2 = new PathRequest({
+	request_id: "r2",
+	source: "Site_A",
+	destination: "Site_C",
+	bidirectional: false,
+	path_constraints: new PathConstraints({
+		technology: "flexi-grid",
+		trx_type: "Voyager",
+		trx_mode: null,
+		spacing: 40e9,
+		max_channels: 100,
+		output_power: null,
+		path_bandwidth: 500e9,
+	}),
+});
+const s1 = new SynchronizationVector({
+	sync_id: r1.request_id,
+	svec: {
+		relaxable: "false",
+		disjointness: "node link",
+		request_id_number: [r1.request_id, r2.request_id],
+	},
+});
+const s = new ServiceRequests(
+	new PathRequest_Collection([r1, r2]),
+	new SyncVector_Collection([s1])
+);
 
-// let input = JSON.parse(fs.readFileSync("./test_files/input.json").toString());
+console.log(s.json());
+
+// let input = JSON.parse(fs.readFileSync("./test_files/ex.json").toString());
 // const Topology = new PhysicalTopology(
 // 	new ElementCollection(input.elements),
 // 	new ConnectionList(input.connections)
@@ -57,7 +71,7 @@ console.log(lights.get("1"));
 // if (A) {
 // 	Topology.elements.remove(A.uid, A.type);
 // }
-// console.log(Topology.connections.json);
+// console.log(Topology.json());
 
 // console.log(input);
 
@@ -102,7 +116,10 @@ console.log(lights.get("1"));
 // top.connections.removeConnection(tran, roadm);
 
 // const fileWrite = async () => {
-// 	await fs.writeFileSync("./ex.json", JSON.stringify(top.json(), null, 2));
+// 	await fs.writeFileSync(
+// 		"./ex.json",
+// 		JSON.stringify(Topology.json(), null, 2)
+// 	);
 // 	console.log("written");
 // };
 // fileWrite();

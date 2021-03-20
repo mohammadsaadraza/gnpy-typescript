@@ -76,9 +76,8 @@ var ElementCollection = /** @class */ (function () {
             case "Edfa":
                 this.amplifiers = lodash_1.filter(this.amplifiers, function (o) { return uid !== o.uid; });
                 break;
-            default:
-                this.elements = lodash_1.filter(this.elements, function (o) { return uid !== o.uid; });
         }
+        this.elements = lodash_1.filter(this.elements, function (o) { return uid !== o.uid; });
         this.ids.delete(uid);
     };
     Object.defineProperty(ElementCollection.prototype, "uids", {

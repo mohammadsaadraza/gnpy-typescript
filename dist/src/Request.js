@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PathRequest_Collection = exports.PathRequest = exports.PathConstraints = void 0;
+exports.PathRequest_Collection = exports.SyncVector_Collection = exports.SynchronizationVector = exports.PathRequest = exports.PathConstraints = void 0;
 var lodash_1 = require("lodash");
 var PathConstraints = /** @class */ (function () {
     function PathConstraints(obj) {
@@ -58,9 +58,70 @@ var PathRequest = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
+    PathRequest.prototype.copy = function (new_id) {
+        var obj = new PathRequest(this);
+        obj.request_id = new_id;
+        return obj;
+    };
     return PathRequest;
 }());
 exports.PathRequest = PathRequest;
+var SynchronizationVector = /** @class */ (function () {
+    function SynchronizationVector(obj) {
+        this.sync_id = obj.sync_id;
+        this.svec = obj.svec;
+    }
+    Object.defineProperty(SynchronizationVector.prototype, "json", {
+        get: function () {
+            return {
+                "synchronization-id": this.sync_id,
+                svec: {
+                    relaxable: this.svec.relaxable,
+                    disjointness: this.svec.disjointness,
+                    "request-id-number": this.svec.request_id_number,
+                },
+            };
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return SynchronizationVector;
+}());
+exports.SynchronizationVector = SynchronizationVector;
+var SyncVector_Collection = /** @class */ (function () {
+    function SyncVector_Collection(sVecs) {
+        var _this = this;
+        this.syncVectors = [];
+        if (sVecs) {
+            lodash_1.forEach(sVecs, function (e) {
+                if (e instanceof SynchronizationVector) {
+                    _this.syncVectors.push(e);
+                }
+                else {
+                    _this.syncVectors.push(new SynchronizationVector(e));
+                }
+            });
+        }
+    }
+    SyncVector_Collection.prototype.add = function (obj) {
+        this.syncVectors.push(new SynchronizationVector(obj));
+    };
+    SyncVector_Collection.prototype.remove = function (id) {
+        this.syncVectors = lodash_1.filter(this.syncVectors, function (e) { return e.sync_id !== id; });
+    };
+    SyncVector_Collection.prototype.get = function (id) {
+        return lodash_1.find(this.syncVectors, function (e) { return id === e.sync_id; });
+    };
+    Object.defineProperty(SyncVector_Collection.prototype, "json", {
+        get: function () {
+            return lodash_1.map(this.syncVectors, function (e) { return e.json; });
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return SyncVector_Collection;
+}());
+exports.SyncVector_Collection = SyncVector_Collection;
 var PathRequest_Collection = /** @class */ (function () {
     function PathRequest_Collection(list) {
         var _this = this;

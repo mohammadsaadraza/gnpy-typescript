@@ -34,7 +34,7 @@ export class GNPY_Node implements Network_Node {
 	}
 
 	get info(): string {
-		return `${this.metadata.location.city}, ${this.metadata.location.region}`;
+		return `${this.metadata.location.city}`;
 	}
 }
 
