@@ -129,17 +129,17 @@ export class SyncVector_Collection {
 	constructor(sVecs?: SynchronizationObject[]) {
 		if (sVecs) {
 			forEach(sVecs, (e) => {
-				if (e instanceof SynchronizationVector) {
-					this.syncVectors.push(e);
-				} else {
-					this.syncVectors.push(new SynchronizationVector(e));
-				}
+				this.add(e);
 			});
 		}
 	}
 
 	add(obj: SynchronizationObject): void {
-		this.syncVectors.push(new SynchronizationVector(obj));
+		if (obj instanceof SynchronizationVector) {
+			this.syncVectors.push(obj);
+		} else {
+			this.syncVectors.push(new SynchronizationVector(obj));
+		}
 	}
 
 	remove(id: string): void {
@@ -161,17 +161,17 @@ export class PathRequest_Collection {
 	constructor(list?: RequestObject[]) {
 		if (list) {
 			forEach(list, (e) => {
-				if (e instanceof PathRequest) {
-					this.requests.push(e);
-				} else {
-					this.requests.push(new PathRequest(e));
-				}
+				this.add(e);
 			});
 		}
 	}
 
 	add(obj: RequestObject): void {
-		this.requests.push(new PathRequest(obj));
+		if (obj instanceof PathRequest) {
+			this.requests.push(obj);
+		} else {
+			this.requests.push(new PathRequest(obj));
+		}
 	}
 
 	remove(id: string): void {

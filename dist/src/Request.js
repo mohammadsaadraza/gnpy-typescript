@@ -94,17 +94,17 @@ var SyncVector_Collection = /** @class */ (function () {
         this.syncVectors = [];
         if (sVecs) {
             lodash_1.forEach(sVecs, function (e) {
-                if (e instanceof SynchronizationVector) {
-                    _this.syncVectors.push(e);
-                }
-                else {
-                    _this.syncVectors.push(new SynchronizationVector(e));
-                }
+                _this.add(e);
             });
         }
     }
     SyncVector_Collection.prototype.add = function (obj) {
-        this.syncVectors.push(new SynchronizationVector(obj));
+        if (obj instanceof SynchronizationVector) {
+            this.syncVectors.push(obj);
+        }
+        else {
+            this.syncVectors.push(new SynchronizationVector(obj));
+        }
     };
     SyncVector_Collection.prototype.remove = function (id) {
         this.syncVectors = lodash_1.filter(this.syncVectors, function (e) { return e.sync_id !== id; });
@@ -128,17 +128,17 @@ var PathRequest_Collection = /** @class */ (function () {
         this.requests = [];
         if (list) {
             lodash_1.forEach(list, function (e) {
-                if (e instanceof PathRequest) {
-                    _this.requests.push(e);
-                }
-                else {
-                    _this.requests.push(new PathRequest(e));
-                }
+                _this.add(e);
             });
         }
     }
     PathRequest_Collection.prototype.add = function (obj) {
-        this.requests.push(new PathRequest(obj));
+        if (obj instanceof PathRequest) {
+            this.requests.push(obj);
+        }
+        else {
+            this.requests.push(new PathRequest(obj));
+        }
     };
     PathRequest_Collection.prototype.remove = function (id) {
         this.requests = lodash_1.filter(this.requests, function (e) { return e.request_id !== id; });
