@@ -211,16 +211,31 @@ export interface JSONInput {
 	response: ResponseObject[];
 }
 
-export class LigthPath_Collection {
+export class LightPath_Collection {
 	private lightpaths: LightPath[] = [];
+	private responseJSON: string;
+	private IDs: Set<string> = new Set();
 
 	constructor(obj: JSONInput) {
+		this.responseJSON = JSON.stringify(obj);
 		this.lightpaths = map(obj.response, (e: ResponseObject) => {
+			this.IDs.add(e["response-id"]);
 			return new LightPath(e);
 		});
 	}
 
+	getJSON() {
+		return JSON.parse(this.responseJSON);
+	}
+
+	get responseIDs() {
+		return this.IDs;
+	}
+
 	get(id: string) {
+		if (!this.IDs.has(id)) {
+			throw Error("Incorrect ID of response. Check again!");
+		}
 		return find(this.lightpaths, (e) => e.response_id === id);
 	}
 }

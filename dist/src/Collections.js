@@ -190,25 +190,25 @@ var ConnectionList = /** @class */ (function () {
             }
         ], this.list);
     };
-    ConnectionList.prototype.removeLink = function (roadm_A, fiber_AB, roadm_B, fiber_BA) {
+    ConnectionList.prototype.removeLink = function (roadmA_uid, fiberAB_uid, roadmB_uid, fiberBA_uid) {
         var _this = this;
-        /* add a bi-directional fiber path from roadm_A to roadm_B*/
+        /* remove a bi-directional fiber path from roadm_A to roadm_B*/
         [
             {
-                from_node: roadm_A.uid,
-                to_node: fiber_AB.uid,
+                from_node: roadmA_uid,
+                to_node: fiberAB_uid,
             },
             {
-                from_node: fiber_AB.uid,
-                to_node: roadm_B.uid,
+                from_node: fiberAB_uid,
+                to_node: roadmB_uid,
             },
             {
-                from_node: roadm_B.uid,
-                to_node: fiber_BA.uid,
+                from_node: roadmB_uid,
+                to_node: fiberBA_uid,
             },
             {
-                from_node: fiber_BA.uid,
-                to_node: roadm_A.uid,
+                from_node: fiberBA_uid,
+                to_node: roadmA_uid,
             },
         ].forEach(function (conn) {
             _this.list = _this.list.filter(function (value) {

@@ -10,57 +10,57 @@ import {
 	SyncVector_Collection,
 	SynchronizationVector,
 } from "./src/Request";
-import { LightPath, LigthPath_Collection } from "./src/Response";
+import { LightPath, LightPath_Collection } from "./src/Response";
 import { ServiceRequests } from "./src/Service";
 
-// let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
-// const lights = new LigthPath_Collection(input);
-// console.log(lights.get("1"));
+let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
+const lights = new LightPath_Collection(input);
+console.log(lights.responseIDs);
 
-const r1 = new PathRequest({
-	request_id: "r1",
-	source: "Site_B",
-	destination: "Site_C",
-	bidirectional: false,
-	path_constraints: new PathConstraints({
-		technology: "flexi-grid",
-		trx_type: "Voyager",
-		trx_mode: null,
-		spacing: 40e9,
-		max_channels: 100,
-		output_power: null,
-		path_bandwidth: 500e9,
-	}),
-});
-const r2 = new PathRequest({
-	request_id: "r2",
-	source: "Site_A",
-	destination: "Site_C",
-	bidirectional: false,
-	path_constraints: new PathConstraints({
-		technology: "flexi-grid",
-		trx_type: "Voyager",
-		trx_mode: null,
-		spacing: 40e9,
-		max_channels: 100,
-		output_power: null,
-		path_bandwidth: 500e9,
-	}),
-});
-const s1 = new SynchronizationVector({
-	sync_id: r1.request_id,
-	svec: {
-		relaxable: "false",
-		disjointness: "node link",
-		request_id_number: [r1.request_id, r2.request_id],
-	},
-});
-const s = new ServiceRequests(
-	new PathRequest_Collection([r1, r2]),
-	new SyncVector_Collection([s1])
-);
+// const r1 = new PathRequest({
+// 	request_id: "r1",
+// 	source: "Site_B",
+// 	destination: "Site_C",
+// 	bidirectional: false,
+// 	path_constraints: new PathConstraints({
+// 		technology: "flexi-grid",
+// 		trx_type: "Voyager",
+// 		trx_mode: null,
+// 		spacing: 40e9,
+// 		max_channels: 100,
+// 		output_power: null,
+// 		path_bandwidth: 500e9,
+// 	}),
+// });
+// const r2 = new PathRequest({
+// 	request_id: "r2",
+// 	source: "Site_B",
+// 	destination: "Site_C",
+// 	bidirectional: false,
+// 	path_constraints: new PathConstraints({
+// 		technology: "flexi-grid",
+// 		trx_type: "Voyager",
+// 		trx_mode: null,
+// 		spacing: 40e9,
+// 		max_channels: 100,
+// 		output_power: null,
+// 		path_bandwidth: 500e9,
+// 	}),
+// });
+// const s1 = new SynchronizationVector({
+// 	sync_id: r1.request_id,
+// 	svec: {
+// 		relaxable: "false",
+// 		disjointness: "node link",
+// 		request_id_number: [r1.request_id, r2.request_id],
+// 	},
+// });
+// const s = new ServiceRequests(
+// 	new PathRequest_Collection([r1, r2]),
+// 	new SyncVector_Collection([s1])
+// );
 
-console.log(s.json());
+// console.log(s.json());
 
 // let input = JSON.parse(fs.readFileSync("./test_files/ex.json").toString());
 // const Topology = new PhysicalTopology(

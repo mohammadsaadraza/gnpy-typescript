@@ -4,14 +4,8 @@ exports.ServiceRequests = void 0;
 var Request_1 = require("./Request");
 var ServiceRequests = /** @class */ (function () {
     function ServiceRequests(reqs, sVecs) {
-        if (reqs && sVecs) {
-            this.pathRequests = reqs;
-            this.syncVectors = sVecs;
-        }
-        else {
-            this.pathRequests = new Request_1.PathRequest_Collection();
-            this.syncVectors = new Request_1.SyncVector_Collection();
-        }
+        this.pathRequests = reqs ? reqs : new Request_1.PathRequest_Collection();
+        this.syncVectors = sVecs ? sVecs : new Request_1.SyncVector_Collection();
     }
     ServiceRequests.prototype.json = function () {
         return {

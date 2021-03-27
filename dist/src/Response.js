@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LigthPath_Collection = exports.LightPath = exports.PathProperties = void 0;
+exports.LightPath_Collection = exports.LightPath = exports.PathProperties = void 0;
 var lodash_1 = require("lodash");
 var PathProperties = /** @class */ (function () {
     function PathProperties(obj) {
@@ -127,16 +127,33 @@ var LightPath = /** @class */ (function () {
     return LightPath;
 }());
 exports.LightPath = LightPath;
-var LigthPath_Collection = /** @class */ (function () {
-    function LigthPath_Collection(obj) {
+var LightPath_Collection = /** @class */ (function () {
+    function LightPath_Collection(obj) {
+        var _this = this;
         this.lightpaths = [];
+        this.IDs = new Set();
+        this.responseJSON = JSON.stringify(obj);
         this.lightpaths = lodash_1.map(obj.response, function (e) {
+            _this.IDs.add(e["response-id"]);
             return new LightPath(e);
         });
     }
-    LigthPath_Collection.prototype.get = function (id) {
+    LightPath_Collection.prototype.getJSON = function () {
+        return JSON.parse(this.responseJSON);
+    };
+    Object.defineProperty(LightPath_Collection.prototype, "responseIDs", {
+        get: function () {
+            return this.IDs;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    LightPath_Collection.prototype.get = function (id) {
+        if (!this.IDs.has(id)) {
+            throw Error("Incorrect ID of response. Check again!");
+        }
         return lodash_1.find(this.lightpaths, function (e) { return e.response_id === id; });
     };
-    return LigthPath_Collection;
+    return LightPath_Collection;
 }());
-exports.LigthPath_Collection = LigthPath_Collection;
+exports.LightPath_Collection = LightPath_Collection;

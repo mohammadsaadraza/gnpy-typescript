@@ -190,29 +190,24 @@ export class ConnectionList {
 		];
 	}
 
-	removeLink(
-		roadm_A: Roadm,
-		fiber_AB: Fiber,
-		roadm_B: Roadm,
-		fiber_BA: Fiber
-	) {
-		/* add a bi-directional fiber path from roadm_A to roadm_B*/
+	removeLink(roadmA_uid: string, fiberAB_uid: string, roadmB_uid: string, fiberBA_uid: string) {
+		/* remove a bi-directional fiber path from roadm_A to roadm_B*/
 		[
 			{
-				from_node: roadm_A.uid,
-				to_node: fiber_AB.uid,
+				from_node: roadmA_uid,
+				to_node: fiberAB_uid,
 			},
 			{
-				from_node: fiber_AB.uid,
-				to_node: roadm_B.uid,
+				from_node: fiberAB_uid,
+				to_node: roadmB_uid,
 			},
 			{
-				from_node: roadm_B.uid,
-				to_node: fiber_BA.uid,
+				from_node: roadmB_uid,
+				to_node: fiberBA_uid,
 			},
 			{
-				from_node: fiber_BA.uid,
-				to_node: roadm_A.uid,
+				from_node: fiberBA_uid,
+				to_node: roadmA_uid,
 			},
 		].forEach((conn: Connection) => {
 			this.list = this.list.filter((value) => {

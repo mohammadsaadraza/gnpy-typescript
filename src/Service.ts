@@ -5,13 +5,8 @@ export class ServiceRequests {
 	syncVectors: SyncVector_Collection;
 
 	constructor(reqs?: PathRequest_Collection, sVecs?: SyncVector_Collection) {
-		if (reqs && sVecs) {
-			this.pathRequests = reqs;
-			this.syncVectors = sVecs;
-		} else {
-			this.pathRequests = new PathRequest_Collection();
-			this.syncVectors = new SyncVector_Collection();
-		}
+		this.pathRequests = reqs ? reqs : new PathRequest_Collection();
+		this.syncVectors = sVecs ? sVecs : new SyncVector_Collection();
 	}
 
 	json() {
