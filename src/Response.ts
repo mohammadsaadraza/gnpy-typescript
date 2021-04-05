@@ -212,7 +212,7 @@ export interface JSONInput {
 }
 
 export class LightPath_Collection {
-	private lightpaths: LightPath[] = [];
+	lightpaths: LightPath[] = [];
 	private responseJSON: string;
 	private IDs: Set<string> = new Set();
 
