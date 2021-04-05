@@ -12,10 +12,17 @@ import {
 } from "./src/Request";
 import { LightPath, LightPath_Collection } from "./src/Response";
 import { ServiceRequests } from "./src/Service";
+import { EquipmentConfiguration } from "./src/Eqpt_Config";
 
-let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
-const lights = new LightPath_Collection(input);
-console.log(lights.responseIDs);
+let input = JSON.parse(
+	fs.readFileSync("./test_files/eqpt_config.json").toString()
+);
+const ec = new EquipmentConfiguration(input);
+console.log(JSON.parse(JSON.stringify(ec.getAvailable("Transceiver"))));
+
+// let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
+// const lights = new LightPath_Collection(input);
+// console.log(lights.responseIDs);
 
 // const r1 = new PathRequest({
 // 	request_id: "r1",

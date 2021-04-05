@@ -4,10 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs_1 = __importDefault(require("fs"));
-var Response_1 = require("./src/Response");
-var input = JSON.parse(fs_1.default.readFileSync("./test_files/result.json").toString());
-var lights = new Response_1.LightPath_Collection(input);
-console.log(lights.responseIDs);
+var Eqpt_Config_1 = require("./src/Eqpt_Config");
+var input = JSON.parse(fs_1.default.readFileSync("./test_files/eqpt_config.json").toString());
+var ec = new Eqpt_Config_1.EquipmentConfiguration(input);
+console.log(JSON.parse(JSON.stringify(ec.getAvailable("Transceiver"))));
+// let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
+// const lights = new LightPath_Collection(input);
+// console.log(lights.responseIDs);
 // const r1 = new PathRequest({
 // 	request_id: "r1",
 // 	source: "Site_B",
