@@ -5,9 +5,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
     return to;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ConnectionList = exports.ElementCollection = void 0;
+exports.ConnectionList = exports.ElementCollection = exports.trx_roadm_pattern = exports.fiber_amp_pattern = void 0;
 var Network_Elements_1 = require("./Network_Elements");
 var lodash_1 = require("lodash");
+exports.fiber_amp_pattern = /\w*[(]([a-zA-Z, ]+)->([a-zA-Z, ]+)[)][_()0-9/]*/;
+exports.trx_roadm_pattern = /\w*_([a-zA-Z, ]+)$/;
 var ElementCollection = /** @class */ (function () {
     function ElementCollection(arr) {
         var _this = this;
@@ -39,6 +41,10 @@ var ElementCollection = /** @class */ (function () {
     ElementCollection.prototype.add = function (element) {
         if (this.ids.has(element.uid)) {
             throw new Error("Element of uid \"" + element.uid + "\" already exists. Use a different identifier.");
+        }
+        if (!(exports.trx_roadm_pattern.test(element.uid) ||
+            exports.fiber_amp_pattern.test(element.uid))) {
+            throw new Error("Element of uid \"" + element.uid + "\" has the wrong format. For example trx_<City>, roadm_<City>, Edfa0_<City>, Fiber_(<City>-><City>)");
         }
         if (element instanceof Network_Elements_1.Transceiver) {
             this.transceivers.push(element);

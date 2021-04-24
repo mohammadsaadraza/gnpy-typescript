@@ -65,10 +65,7 @@ var FiberConfig = /** @class */ (function () {
 exports.FiberConfig = FiberConfig;
 var EdfaConfig = /** @class */ (function () {
     function EdfaConfig(obj) {
-        this.type_variety = obj.type_variety;
-        this.type_def = obj.type_def;
-        this.out_voa_auto = obj.out_voa_auto;
-        this.allowed_for_design = obj.allowed_for_design;
+        Object.assign(this, obj);
     }
     Object.defineProperty(EdfaConfig.prototype, "json", {
         get: function () {
@@ -99,18 +96,19 @@ var ROADMConfig = /** @class */ (function () {
 exports.ROADMConfig = ROADMConfig;
 var SpanConfig = /** @class */ (function () {
     function SpanConfig(obj) {
-        this.power_mode = obj.power_mode;
-        this.delta_power_range_db = obj.delta_power_range_db;
-        this.max_fiber_lineic_loss_for_raman =
-            obj.max_fiber_lineic_loss_for_raman;
-        this.target_extended_gain = obj.target_extended_gain;
-        this.max_length = obj.max_length;
-        this.length_units = obj.length_units;
-        this.max_loss = obj.max_loss;
-        this.padding = obj.padding;
-        this.EOL = obj.EOL;
-        this.con_in = obj.con_in;
-        this.con_out = obj.con_out;
+        Object.assign(this, obj);
+        // this.power_mode = obj.power_mode;
+        // this.delta_power_range_db = obj.delta_power_range_db;
+        // this.max_fiber_lineic_loss_for_raman =
+        // 	obj.max_fiber_lineic_loss_for_raman;
+        // this.target_extended_gain = obj.target_extended_gain;
+        // this.max_length = obj.max_length;
+        // this.length_units = obj.length_units;
+        // this.max_loss = obj.max_loss;
+        // this.padding = obj.padding;
+        // this.EOL = obj.EOL;
+        // this.con_in = obj.con_in;
+        // this.con_out = obj.con_out;
     }
     Object.defineProperty(SpanConfig.prototype, "json", {
         get: function () {
@@ -124,15 +122,16 @@ var SpanConfig = /** @class */ (function () {
 exports.SpanConfig = SpanConfig;
 var SpectralInformationConfig = /** @class */ (function () {
     function SpectralInformationConfig(obj) {
-        this.f_min = obj.f_min;
-        this.f_max = obj.f_max;
-        this.baud_rate = obj.baud_rate;
-        this.spacing = obj.spacing;
-        this.power_dbm = obj.power_dbm;
-        this.power_range_db = obj.power_range_db;
-        this.roll_off = obj.roll_off;
-        this.tx_osnr = obj.tx_osnr;
-        this.sys_margins = obj.sys_margins;
+        Object.assign(this, obj);
+        // this.f_min = obj.f_min;
+        // this.f_max = obj.f_max;
+        // this.baud_rate = obj.baud_rate;
+        // this.spacing = obj.spacing;
+        // this.power_dbm = obj.power_dbm;
+        // this.power_range_db = obj.power_range_db;
+        // this.roll_off = obj.roll_off;
+        // this.tx_osnr = obj.tx_osnr;
+        // this.sys_margins = obj.sys_margins;
     }
     Object.defineProperty(SpectralInformationConfig.prototype, "json", {
         get: function () {

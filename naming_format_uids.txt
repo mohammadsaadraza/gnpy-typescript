@@ -1,0 +1,7 @@
+trx_Seattle
+roadm_Seattle
+fiber_(Seattle->Sunyvale)
+fiber_(Seattle->Denver)
+fiber_(Sunyvale->Seattle)
+fiber_(Denver->Seattle)
+Edfa0_fiber_(Denver->Seattle)_(1/2)

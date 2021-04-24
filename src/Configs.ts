@@ -6,7 +6,6 @@ import {
 	SpanParams,
 	SI_Params,
 	T_ModeParams,
-	NoiseModel,
 } from "./Params";
 import { Km } from "./Network_Defs";
 import { map } from "lodash";
@@ -85,15 +84,12 @@ export class FiberConfig implements FiberParams {
 
 export class EdfaConfig implements EdfaParams {
 	type_variety: string;
-	type_def: NoiseModel;
+	type_def: string;
 	out_voa_auto: boolean;
 	allowed_for_design: boolean;
 
 	constructor(obj: EdfaParams) {
-		this.type_variety = obj.type_variety;
-		this.type_def = obj.type_def;
-		this.out_voa_auto = obj.out_voa_auto;
-		this.allowed_for_design = obj.allowed_for_design;
+		Object.assign(this, obj);
 	}
 
 	get json() {
@@ -136,18 +132,7 @@ export class SpanConfig implements SpanParams {
 	con_out: number;
 
 	constructor(obj: SpanParams) {
-		this.power_mode = obj.power_mode;
-		this.delta_power_range_db = obj.delta_power_range_db;
-		this.max_fiber_lineic_loss_for_raman =
-			obj.max_fiber_lineic_loss_for_raman;
-		this.target_extended_gain = obj.target_extended_gain;
-		this.max_length = obj.max_length;
-		this.length_units = obj.length_units;
-		this.max_loss = obj.max_loss;
-		this.padding = obj.padding;
-		this.EOL = obj.EOL;
-		this.con_in = obj.con_in;
-		this.con_out = obj.con_out;
+		Object.assign(this, obj);
 	}
 
 	get json() {
@@ -167,15 +152,7 @@ export class SpectralInformationConfig implements SI_Params {
 	sys_margins: number;
 
 	constructor(obj: SI_Params) {
-		this.f_min = obj.f_min;
-		this.f_max = obj.f_max;
-		this.baud_rate = obj.baud_rate;
-		this.spacing = obj.spacing;
-		this.power_dbm = obj.power_dbm;
-		this.power_range_db = obj.power_range_db;
-		this.roll_off = obj.roll_off;
-		this.tx_osnr = obj.tx_osnr;
-		this.sys_margins = obj.sys_margins;
+		Object.assign(this, obj);
 	}
 
 	get json() {

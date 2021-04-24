@@ -1,19 +1,20 @@
 import { Km } from "./Network_Defs";
-export enum NoiseModel {
-	variable_gain = "variable_gain",
-	fixed_gain = "fixed_gain",
-	None = "None",
-}
+// export enum NoiseModel {
+// 	variable_gain = "variable_gain",
+// 	fixed_gain = "fixed_gain",
+// 	None = "None",
+// }
 
 export interface EdfaParams {
 	type_variety: string;
-	type_def: NoiseModel;
+	type_def: string;
 	gain_flatmax?: number;
 	gain_min?: number;
 	p_max?: number;
 	nf_min?: number;
 	nf_max?: number;
 	out_voa_auto: boolean;
+	advanced_config_from_json?: string;
 	allowed_for_design: boolean;
 }
 

@@ -14,6 +14,9 @@ export interface Connection {
 	to_node: string;
 }
 
+export const fiber_amp_pattern = /\w*[(]([a-zA-Z, ]+)->([a-zA-Z, ]+)[)][_()0-9/]*/;
+export const trx_roadm_pattern = /\w*_([a-zA-Z, ]+)$/;
+
 export class ElementCollection {
 	private elements: Network_Node[] = [];
 
@@ -52,6 +55,17 @@ export class ElementCollection {
 		if (this.ids.has(element.uid)) {
 			throw new Error(
 				`Element of uid "${element.uid}" already exists. Use a different identifier.`
+			);
+		}
+
+		if (
+			!(
+				trx_roadm_pattern.test(element.uid) ||
+				fiber_amp_pattern.test(element.uid)
+			)
+		) {
+			throw new Error(
+				`Element of uid "${element.uid}" has the wrong format. For example trx_<City>, roadm_<City>, Edfa0_<City>, Fiber_(<City>-><City>)`
 			);
 		}
 
@@ -190,7 +204,12 @@ export class ConnectionList {
 		];
 	}
 
-	removeLink(roadmA_uid: string, fiberAB_uid: string, roadmB_uid: string, fiberBA_uid: string) {
+	removeLink(
+		roadmA_uid: string,
+		fiberAB_uid: string,
+		roadmB_uid: string,
+		fiberBA_uid: string
+	) {
 		/* remove a bi-directional fiber path from roadm_A to roadm_B*/
 		[
 			{
