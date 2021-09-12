@@ -21,14 +21,15 @@ export class ModeConfig implements T_ModeParams {
 	cost: number;
 
 	constructor(obj: T_ModeParams) {
-		this.format = obj.format;
-		this.baud_rate = obj.baud_rate;
-		this.OSNR = obj.OSNR;
-		this.bit_rate = obj.bit_rate;
-		this.roll_off = obj.roll_off;
-		this.tx_osnr = obj.tx_osnr;
-		this.min_spacing = obj.min_spacing;
-		this.cost = obj.cost;
+		// this.format = obj.format;
+		// this.baud_rate = obj.baud_rate;
+		// this.OSNR = obj.OSNR;
+		// this.bit_rate = obj.bit_rate;
+		// this.roll_off = obj.roll_off;
+		// this.tx_osnr = obj.tx_osnr;
+		// this.min_spacing = obj.min_spacing;
+		// this.cost = obj.cost;
+		Object.assign(this, obj)
 	}
 
 	get json() {
@@ -67,14 +68,15 @@ export class FiberConfig implements FiberParams {
 	pmd_coef: number;
 
 	constructor(obj: FiberParams) {
-		this.type_variety = obj.type_variety;
-		this.dispersion = obj.dispersion;
-		this.gamma = obj.gamma;
-		this.pmd_coef = obj.pmd_coef;
+		// this.type_variety = obj.type_variety;
+		// this.dispersion = obj.dispersion;
+		// this.gamma = obj.gamma;
+		// this.pmd_coef = obj.pmd_coef;
 
-		if (obj.dispersion_slope) {
-			this.dispersion_slope = obj.dispersion_slope;
-		}
+		// if (obj.dispersion_slope) {
+		// 	this.dispersion_slope = obj.dispersion_slope;
+		// }
+		Object.assign(this, obj)
 	}
 
 	get json() {
@@ -107,10 +109,11 @@ export class ROADMConfig implements ROADMParams {
 	};
 
 	constructor(obj: ROADMParams) {
-		this.target_pch_out_db = obj.target_pch_out_db;
-		this.add_drop_osnr = obj.add_drop_osnr;
-		this.pmd = obj.pmd;
-		this.restrictions = obj.restrictions;
+		// this.target_pch_out_db = obj.target_pch_out_db;
+		// this.add_drop_osnr = obj.add_drop_osnr;
+		// this.pmd = obj.pmd;
+		// this.restrictions = obj.restrictions;
+		Object.assign(this, obj)
 	}
 
 	get json() {

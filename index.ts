@@ -20,6 +20,7 @@ let input = JSON.parse(
 const ec = new EquipmentConfiguration(input);
 // console.log(JSON.parse(JSON.stringify(ec.getAvailable("Transceiver"))));
 fs.writeFileSync("derived.json", JSON.stringify(ec.json(), null, 4));
+console.log(ec.Transceiver[0].json)
 
 // let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
 // const lights = new LightPath_Collection(input);

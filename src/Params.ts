@@ -7,7 +7,7 @@ import { Km } from "./Network_Defs";
 
 export interface EdfaParams {
 	type_variety: string;
-	type_def: string;
+	type_def?: string;
 	gain_flatmax?: number;
 	gain_min?: number;
 	p_max?: number;

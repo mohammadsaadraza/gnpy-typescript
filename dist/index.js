@@ -9,6 +9,7 @@ var input = JSON.parse(fs_1.default.readFileSync("./test_files/eqpt_config.json"
 var ec = new Eqpt_Config_1.EquipmentConfiguration(input);
 // console.log(JSON.parse(JSON.stringify(ec.getAvailable("Transceiver"))));
 fs_1.default.writeFileSync("derived.json", JSON.stringify(ec.json(), null, 4));
+console.log(ec.Transceiver[0].json);
 // let input = JSON.parse(fs.readFileSync("./test_files/result.json").toString());
 // const lights = new LightPath_Collection(input);
 // console.log(lights.responseIDs);

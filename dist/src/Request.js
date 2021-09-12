@@ -93,7 +93,7 @@ var SyncVector_Collection = /** @class */ (function () {
         var _this = this;
         this.syncVectors = [];
         if (sVecs) {
-            lodash_1.forEach(sVecs, function (e) {
+            (0, lodash_1.forEach)(sVecs, function (e) {
                 _this.add(e);
             });
         }
@@ -107,14 +107,14 @@ var SyncVector_Collection = /** @class */ (function () {
         }
     };
     SyncVector_Collection.prototype.remove = function (id) {
-        this.syncVectors = lodash_1.filter(this.syncVectors, function (e) { return e.sync_id !== id; });
+        this.syncVectors = (0, lodash_1.filter)(this.syncVectors, function (e) { return e.sync_id !== id; });
     };
     SyncVector_Collection.prototype.get = function (id) {
-        return lodash_1.find(this.syncVectors, function (e) { return id === e.sync_id; });
+        return (0, lodash_1.find)(this.syncVectors, function (e) { return id === e.sync_id; });
     };
     Object.defineProperty(SyncVector_Collection.prototype, "json", {
         get: function () {
-            return lodash_1.map(this.syncVectors, function (e) { return e.json; });
+            return (0, lodash_1.map)(this.syncVectors, function (e) { return e.json; });
         },
         enumerable: false,
         configurable: true
@@ -127,7 +127,7 @@ var PathRequest_Collection = /** @class */ (function () {
         var _this = this;
         this.requests = [];
         if (list) {
-            lodash_1.forEach(list, function (e) {
+            (0, lodash_1.forEach)(list, function (e) {
                 _this.add(e);
             });
         }
@@ -141,14 +141,14 @@ var PathRequest_Collection = /** @class */ (function () {
         }
     };
     PathRequest_Collection.prototype.remove = function (id) {
-        this.requests = lodash_1.filter(this.requests, function (e) { return e.request_id !== id; });
+        this.requests = (0, lodash_1.filter)(this.requests, function (e) { return e.request_id !== id; });
     };
     PathRequest_Collection.prototype.get = function (id) {
-        return lodash_1.find(this.requests, function (e) { return id === e.request_id; });
+        return (0, lodash_1.find)(this.requests, function (e) { return id === e.request_id; });
     };
     Object.defineProperty(PathRequest_Collection.prototype, "json", {
         get: function () {
-            return lodash_1.map(this.requests, function (e) { return e.json; });
+            return (0, lodash_1.map)(this.requests, function (e) { return e.json; });
         },
         enumerable: false,
         configurable: true

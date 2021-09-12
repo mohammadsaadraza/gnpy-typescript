@@ -1,8 +1,12 @@
 "use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectionList = exports.ElementCollection = exports.trx_roadm_pattern = exports.fiber_amp_pattern = void 0;
@@ -36,7 +40,7 @@ var ElementCollection = /** @class */ (function () {
     }
     ElementCollection.prototype.get = function (uid) {
         /* Finds element , if found returns the class object else returns undefined*/
-        return lodash_1.find(this.elements, function (o) { return uid === o.uid; });
+        return (0, lodash_1.find)(this.elements, function (o) { return uid === o.uid; });
     };
     ElementCollection.prototype.add = function (element) {
         if (this.ids.has(element.uid)) {
@@ -71,19 +75,19 @@ var ElementCollection = /** @class */ (function () {
         }
         switch (type) {
             case "Transceiver":
-                this.transceivers = lodash_1.filter(this.transceivers, function (o) { return uid !== o.uid; });
+                this.transceivers = (0, lodash_1.filter)(this.transceivers, function (o) { return uid !== o.uid; });
                 break;
             case "Roadm":
-                this.roadms = lodash_1.filter(this.roadms, function (o) { return uid !== o.uid; });
+                this.roadms = (0, lodash_1.filter)(this.roadms, function (o) { return uid !== o.uid; });
                 break;
             case "Fiber":
-                this.fibers = lodash_1.filter(this.fibers, function (o) { return uid !== o.uid; });
+                this.fibers = (0, lodash_1.filter)(this.fibers, function (o) { return uid !== o.uid; });
                 break;
             case "Edfa":
-                this.amplifiers = lodash_1.filter(this.amplifiers, function (o) { return uid !== o.uid; });
+                this.amplifiers = (0, lodash_1.filter)(this.amplifiers, function (o) { return uid !== o.uid; });
                 break;
         }
-        this.elements = lodash_1.filter(this.elements, function (o) { return uid !== o.uid; });
+        this.elements = (0, lodash_1.filter)(this.elements, function (o) { return uid !== o.uid; });
         this.ids.delete(uid);
     };
     Object.defineProperty(ElementCollection.prototype, "uids", {
@@ -156,7 +160,7 @@ var ConnectionList = /** @class */ (function () {
                 from_node: roadm.uid,
                 to_node: transceiver.uid,
             }
-        ], this.list);
+        ], this.list, true);
     };
     ConnectionList.prototype.removeConnection = function (transceiver, roadm) {
         var _this = this;
@@ -171,7 +175,7 @@ var ConnectionList = /** @class */ (function () {
             },
         ].forEach(function (conn) {
             _this.list = _this.list.filter(function (value) {
-                return !lodash_1.isEqual(conn, value);
+                return !(0, lodash_1.isEqual)(conn, value);
             });
         });
     };
@@ -194,7 +198,7 @@ var ConnectionList = /** @class */ (function () {
                 from_node: fiber_BA.uid,
                 to_node: roadm_A.uid,
             }
-        ], this.list);
+        ], this.list, true);
     };
     ConnectionList.prototype.removeLink = function (roadmA_uid, fiberAB_uid, roadmB_uid, fiberBA_uid) {
         var _this = this;
@@ -218,7 +222,7 @@ var ConnectionList = /** @class */ (function () {
             },
         ].forEach(function (conn) {
             _this.list = _this.list.filter(function (value) {
-                return !lodash_1.isEqual(conn, value);
+                return !(0, lodash_1.isEqual)(conn, value);
             });
         });
     };

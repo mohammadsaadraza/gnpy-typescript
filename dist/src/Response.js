@@ -6,14 +6,14 @@ var PathProperties = /** @class */ (function () {
     function PathProperties(obj) {
         var _this = this;
         this.a_z = [];
-        lodash_1.forEach(obj["path-route-objects"], function (e) {
+        (0, lodash_1.forEach)(obj["path-route-objects"], function (e) {
             if (e["path-route-object"]["num-unnum-hop"]) {
                 _this.a_z.push(e["path-route-object"]["num-unnum-hop"]["node-id"]);
             }
         });
         if (obj.reverse_path_route_objects) {
             this.z_a = [];
-            lodash_1.forEach(obj.reverse_path_route_objects, function (e) {
+            (0, lodash_1.forEach)(obj.reverse_path_route_objects, function (e) {
                 if (e["path-route-object"]["num-unnum-hop"] && _this.z_a) {
                     _this.z_a.push(e["path-route-object"]["num-unnum-hop"]["node-id"]);
                 }
@@ -38,7 +38,7 @@ var PathProperties = /** @class */ (function () {
             "bit-rate": 0,
             "freq-spectrum": { "freq-start": 0, "freq-end": 0 },
         };
-        lodash_1.forEach(obj, function (e) {
+        (0, lodash_1.forEach)(obj, function (e) {
             switch (e["metric-type"]) {
                 case "SNR-bandwidth":
                     if (e["accumulative-value"]) {
@@ -133,7 +133,7 @@ var LightPath_Collection = /** @class */ (function () {
         this.lightpaths = [];
         this.IDs = new Set();
         this.responseJSON = JSON.stringify(obj);
-        this.lightpaths = lodash_1.map(obj.response, function (e) {
+        this.lightpaths = (0, lodash_1.map)(obj.response, function (e) {
             _this.IDs.add(e["response-id"]);
             return new LightPath(e);
         });
@@ -152,7 +152,7 @@ var LightPath_Collection = /** @class */ (function () {
         if (!this.IDs.has(id)) {
             throw Error("Incorrect ID of response. Check again!");
         }
-        return lodash_1.find(this.lightpaths, function (e) { return e.response_id === id; });
+        return (0, lodash_1.find)(this.lightpaths, function (e) { return e.response_id === id; });
     };
     return LightPath_Collection;
 }());

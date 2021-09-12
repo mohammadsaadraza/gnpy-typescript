@@ -43,17 +43,17 @@ var EquipmentConfiguration = /** @class */ (function () {
         this.amplifiers = [];
         this.transceivers = [];
         this.fibers = [];
-        lodash_1.forEach(obj.Edfa, function (e) { return _this.addEdfa(e); });
-        lodash_1.forEach(obj.Fiber, function (e) { return _this.addFiber(e); });
-        lodash_1.forEach(obj.Transceiver, function (e) { return _this.addTranceiver(e); });
+        (0, lodash_1.forEach)(obj.Edfa, function (e) { return _this.addEdfa(e); });
+        (0, lodash_1.forEach)(obj.Fiber, function (e) { return _this.addFiber(e); });
+        (0, lodash_1.forEach)(obj.Transceiver, function (e) { return _this.addTranceiver(e); });
         this.global = new GlobalConfig(obj.Roadm[0], obj.Span[0], obj.SI[0]);
         this.ramanFiber = obj.RamanFiber;
     }
     EquipmentConfiguration.prototype.json = function () {
         return {
-            Edfa: lodash_1.map(this.amplifiers, function (e) { return e.json; }),
-            Fiber: lodash_1.map(this.fibers, function (e) { return e.json; }),
-            Transceiver: lodash_1.map(this.transceivers, function (e) { return e.json; }),
+            Edfa: (0, lodash_1.map)(this.amplifiers, function (e) { return e.json; }),
+            Fiber: (0, lodash_1.map)(this.fibers, function (e) { return e.json; }),
+            Transceiver: (0, lodash_1.map)(this.transceivers, function (e) { return e.json; }),
             Roadm: [this.global.values("Roadm")],
             Span: [this.global.values("Span")],
             SI: [this.global.values("SI")],
@@ -63,17 +63,17 @@ var EquipmentConfiguration = /** @class */ (function () {
     EquipmentConfiguration.prototype.getAvailable = function (equipment) {
         switch (equipment) {
             case "Edfa":
-                var amps = lodash_1.filter(this.amplifiers, function (e) {
+                var amps = (0, lodash_1.filter)(this.amplifiers, function (e) {
                     if (e.allowed_for_design) {
                         return true;
                     }
                     return false;
                 });
-                return lodash_1.map(amps, function (e) { return e.type_variety; });
+                return (0, lodash_1.map)(amps, function (e) { return e.type_variety; });
             case "Fiber":
-                return lodash_1.map(this.fibers, function (e) { return e.type_variety; });
+                return (0, lodash_1.map)(this.fibers, function (e) { return e.type_variety; });
             case "Transceiver":
-                return lodash_1.map(this.transceivers, function (e) { return e.type_variety; });
+                return (0, lodash_1.map)(this.transceivers, function (e) { return e.type_variety; });
         }
     };
     Object.defineProperty(EquipmentConfiguration.prototype, "Edfa", {
@@ -112,7 +112,7 @@ var EquipmentConfiguration = /** @class */ (function () {
     EquipmentConfiguration.prototype.removeEdfa = function (id) {
         if (this.type_ids.has(id)) {
             var edfa_1 = null;
-            this.amplifiers = lodash_1.filter(this.amplifiers, function (e) {
+            this.amplifiers = (0, lodash_1.filter)(this.amplifiers, function (e) {
                 if (e.type_variety !== id) {
                     return true;
                 }
@@ -143,7 +143,7 @@ var EquipmentConfiguration = /** @class */ (function () {
     EquipmentConfiguration.prototype.removeTransceiver = function (id) {
         if (this.type_ids.has(id)) {
             var tran_1 = null;
-            this.transceivers = lodash_1.filter(this.transceivers, function (e) {
+            this.transceivers = (0, lodash_1.filter)(this.transceivers, function (e) {
                 if (e.type_variety !== id) {
                     return true;
                 }
@@ -174,7 +174,7 @@ var EquipmentConfiguration = /** @class */ (function () {
     EquipmentConfiguration.prototype.removeFiber = function (id) {
         if (this.type_ids.has(id)) {
             var fib_1 = null;
-            this.fibers = lodash_1.filter(this.fibers, function (e) {
+            this.fibers = (0, lodash_1.filter)(this.fibers, function (e) {
                 if (e.type_variety !== id) {
                     return true;
                 }
